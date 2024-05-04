@@ -81,7 +81,7 @@ INSERT INTO volontario (id_volontario, nome_volontario, cognome_volontario, user
 (24,'MATTEO','VILLA','V024','dalia',3),
 (25,'GABRIELE','DE SANTIS','V025','calla',5);
 
-INSERT INTO emergenza (id_emergenza, latitudine_emergenza, longitudine_emergenza, data_emergenza, orario_emergenza, motivo_emergenza, codGravita_emergenza, id_operatore118e, id_ospedalee, id_squadrae) VALUES
+INSERT INTO emergenza (id_emergenza, latitudine_emergenza, longitudine_emergenza, data_emergenza, orario_emergenza, motivo_emergenza, codice_gravita_emergenza, id_operatore118e, id_ospedalee, id_squadrae) VALUES
 (1,45.54720,9.64294,'2023-12-16','23:35','INCIDENTE STRADALE','G',11803,2,5),
 (2,45.41631,9.73958,'2023-11-29','10:50','DOMESTICO','V',11805,4,8);
 
