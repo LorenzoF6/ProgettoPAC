@@ -1,0 +1,24 @@
+Component, deployment diagram e diagramma delle classi definiti su quelli sviluppati nel progetto di Bisceglia e sonzogni perchè mi sembravano il giusto mix di formalità ed informalità nella descrizione iniziale del progetto
+
+Qui faccio una base alle descrizioni da mettere nella documentazione, sentiti libera di modificare il testo :
+
+- Component Diagram:
+partendo dall'implementazione fino ad ora ottenuta dell'architettura software è possibile ricavare il relativo Component Diagram in cui sono stati introdotti un componente control, un componente data e un componente boundary:
+	- <<control>> componenti lato back-end che gesticono la logica di funzionamento del sistema ed 	espongono le API, richiedendole a loro volta per accedere e utillizare il database
+	- <<data>> componenti lato back-end utilizzati la gestione del database
+	- <<boundary>> componenti lato front-end, non ancora implementati, che interagiscono 	l'interazione diretta con gli attori  
+
+
+- Deployment Diagram:
+Tramite l'utilizzo del Deployment Diagram è possibile mostrare la relativa rappresentazione hardware e software del sistema. In Figura ... vengono mostrati i diversi componenti:
+	- Database che funge da risorsa persistente in cui memorizzare i dati,
+	- Web-Server che espone le API lato front-end
+	- Palmari operatori in cui avviene la gestione delle emergenze 
+
+
+- Diagramma delle classi:
+domani
+
+
+- Diagramma ER:
+Generato tramite Intellij, non posso cambiare colore, inoltre ho aggiornato i nomi dei campi delle tabella perchè davano problemi nella conversione in entità oltre che aumentare la robustezza e coerenza
