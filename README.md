@@ -29,7 +29,7 @@ Pertanto lo scopo è aggregare la ricezione delle chiamate e la selezione delle 
 - [x] Intellij IDEA Ultimate : IDE
 - [x] MySQL : Servizio storage dati
 - [x] PostMan : Analisi API Rest progetto
-- [x] Stanj4 : Analisi statica del codice
+- [x] Qodana : Analisi statica del codice
 - [x] JUnit : Analisi dinamica del codice
 
 ## Documentazione
