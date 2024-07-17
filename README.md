@@ -14,7 +14,7 @@ Pertanto lo scopo è aggregare la ricezione delle chiamate e la selezione delle 
 ## Struttura
     .
     ├── Codice                  # Codice della applicazione sviluppata 
-    ├── Documentazione          # Documetazione di tutte le iterazioni necessarie allo sviluppo del progetto
+    ├── Documentazione          # Documentazione di tutte le iterazioni necessarie allo sviluppo del progetto
     └── README.md
 
 ## Linguaggi utilizzati
@@ -34,7 +34,6 @@ Pertanto lo scopo è aggregare la ricezione delle chiamate e la selezione delle 
 
 ## Documentazione
 La repository contiene il materiale relativo al progetto riferito al corso di PAC tenuto dalla Prof.ssa Scandurra presso l'Università degli Studi di Bergamo.</br>
-L'intera documentazione è disponibile al seguente [link](/Documentazione/)
 
 ## Autori
 * Bressanelli Giorgia, 1053903
