@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Emergenza</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Gestione Emergenza</h1>
+    <div>
+        <h5 class="mt-5">Inserimento dati sulla base della descrizione fornita durante il racconto telefonico</h5>
+    </div>
+    <form th:action="@{/api/emergenza/addData}" th:object="${emergenza}" method="post">
+        <div class="form-group">
+        <label for="emergenzaId"></label>
+            <input type="hidden" id="emergenzaId" name="id" th:value="${emergenza.id}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="latitudineEmergenza">Latitudine</label>
+            <input type="text" class="form-control" id="latitudineEmergenza" th:field="*{latitudineEmergenza}" required>
+        </div>
+        <div class="form-group">
+            <label for="longitudineEmergenza">Longitudine</label>
+            <input type="text" class="form-control" id="longitudineEmergenza" th:field="*{longitudineEmergenza}" required>
+        </div>
+        <div class="form-group">
+            <label for="dataEmergenza">Data</label>
+            <input type="date" class="form-control" id="dataEmergenza" th:field="*{dataEmergenza}" required>
+        </div>
+        <div class="form-group">
+            <label for="orarioEmergenza">Orario</label>
+            <input type="time" class="form-control" id="orarioEmergenza" th:field="*{orarioEmergenza}" required>
+        </div>
+        <div class="form-group">
+            <label for="motivoEmergenza">Motivo</label>
+            <input type="text" class="form-control" id="motivoEmergenza" th:field="*{motivoEmergenza}" required>
+        </div>
+        <div class="form-group">
+            <label for="codiceGravitaEmergenza">Codice Gravità</label>
+                <select class="form-control" id="codiceGravitaEmergenza" th:field="*{codgravitaEmergenza}">
+                    <option value="V">Verde</option>
+                    <option value="G">Giallo</option>
+                    <option value="R">Rosso</option>
+                </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Salva Dati</button>
+    </form>
+    <br>
+
+    <h2 class="mt-4">Ospedale e Volontario Selezionato basandosi su distanza e disponiblità</h2>
+    <div th:if="${emergenza.ospedale != null}">
+        <p><strong>Nome:</strong> <span th:text="${emergenza.ospedale.nomeOspedale}"></span></p>
+        <p><strong>Disponibilità:</strong> <span th:text="${emergenza.ospedale.disponibilitaOspedale ? 'Disponibile' : 'Non Disponibile'}"></span></p>
+    </div>
+    <div class="table-responsive">
+        <p>Lista ospedali presenti</p>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Disponibilià</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ospedale : ${listaOspedali}">
+                <td th:text="${ospedale.id}"></td>
+                <td th:text="${ospedale.nomeOspedale}"></td>
+                <td th:text="${ospedale.disponibilitaOspedale}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2 class="mt-4">Capo squadra suggerito basandosi per la gestione dell'emergenza</h2>
+    <div th:if="${volontarioConsigliato != null}">
+        <p><strong>Nome:</strong> <span th:text="${volontarioConsigliato.nomeVolontario}"></span></p>
+        <p><strong>Username:</strong> <span th:text="${volontarioConsigliato.userVolontario}"></span></p>
+        <p><strong>ID squadra:</strong> <span th:text="${volontarioConsigliato.squadra.id}"></span></p>
+    </div>
+    <div class="table-responsive">
+        <p>Lista Capi Squadra in ordine di distanza e disponibilità</p>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Squadra di appartenenza</th>
+                <th>Disponibilià</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="volontario : ${listaVolontari}">
+                <td th:text="${volontario.id}"></td>
+                <td th:text="${volontario.nomeVolontario}"></td>
+                <td th:text="${volontario.squadra.id}"></td>
+                <td th:text="${volontario.squadra.disponibilitaSquadra}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mb-3">
+        <a th:href="@{/api/emergenza/all}" class="btn btn-primary">Termina</a>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

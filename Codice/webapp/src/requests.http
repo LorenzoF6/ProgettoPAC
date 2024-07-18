@@ -1,0 +1,16 @@
+### Elenco di tutti i mezzi
+GET http://localhost:8080/api/mezzo/all
+Content-Type: application/json
+X-XSRF-TOKEN: 8de86742-f827-4dd2-8685-759f975b538b
+
+### Report dettagliato dell'emergenza numero 1
+GET http://localhost:8080/api/emergenza/reportEmergenza/1
+Content-Type: application/json
+
+### Generazione report dell'emergenza numero 1
+GET http://localhost:8080/api/emergenza/generaPDF/1
+Content-Type: application/json
+
+### Logout dalla applicazione
+GET http://localhost:8080/logout
+Content-Type: application/json

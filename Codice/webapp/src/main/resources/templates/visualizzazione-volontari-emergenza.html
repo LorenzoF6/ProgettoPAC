@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergenze Disponibile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="text-center mb-3">
+        <h2>Volontario Loggato</h2>
+        <p><strong>Nome:</strong> <span th:text="${volontario.nomeVolontario}">Nome</span></p>
+        <p><strong>Cognome:</strong> <span th:text="${volontario.cognomeVolontario}">Cognome</span></p>
+        <p><strong>Username:</strong> <span th:text="${volontario.userVolontario}">Username volontario</span></p>
+    </div>
+
+    <h1 class="text-center">Emergenza Disponibile</h1>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Latitudine</th>
+                <th>Longitudine</th>
+                <th>Data</th>
+                <th>Orario</th>
+                <th>Motivo</th>
+                <th>Codice Gravità</th>
+                <th>Ospedale</th>
+                <th>Operatore</th>
+                <th>Squadra</th>
+                <th>Azione</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${emergenza.id}"></td>
+                <td th:text="${emergenza.latitudineEmergenza}"></td>
+                <td th:text="${emergenza.longitudineEmergenza}"></td>
+                <td th:text="${emergenza.dataEmergenza}"></td>
+                <td th:text="${emergenza.orarioEmergenza}"></td>
+                <td th:text="${emergenza.motivoEmergenza}"></td>
+                <td th:text="${emergenza.codgravitaEmergenza}"></td>
+                <td th:text="${emergenza.ospedale.nomeOspedale}"></td>
+                <td th:text="${emergenza.operatore118.userOperatore118}"></td>
+                <td th:text="${emergenza.squadra != null ? emergenza.squadra.id : 'Attesa Accettazione'}"></td>
+                <td>
+                    <a th:href="@{/api/volontari/gestioneEmergenza/{id}(id=${emergenza.id})}" class="btn btn-secondary">Accetta Emergenza</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

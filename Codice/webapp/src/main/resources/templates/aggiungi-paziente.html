@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aggiunta Pazienti</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container pazienteContainer">
+    <h1 class="text-center">Pazienti</h1>
+    <div class="container idContainer">
+    <p>Numero di emergenza a cui si riferiscono i pazienti inseriti: <strong><span id="idEmergenza" th:text="${idEmergenza}"></span></strong></p>
+    </div>
+   <div class="container addPaziente-container">
+    <form th:action="@{'/api/pazienti/addPaziente/' + ${idEmergenza}}" th:object="${paziente}" method="post">
+        <input type="hidden" id="emergenzaId" name="emergenzaId" th:value="${idEmergenza}" readonly>
+        <input type="hidden" id="pazienteId" name="id" th:value="${paziente.id}" readonly>
+        <div class="form-group">
+            <label for="nomePaziente">Nome</label>
+            <input type="text" class="form-control" id="nomePaziente" th:field="*{nomePaziente}" required>
+        </div>
+        <div class="form-group">
+            <label for="cognomePaziente">Cognome</label>
+            <input type="text" class="form-control" id="cognomePaziente" th:field="*{cognomePaziente}" required>
+        </div>
+        <div class="form-group">
+            <label for="etaPaziente">Età</label>
+            <input type="number" class="form-control" id="etaPaziente" th:field="*{etaPaziente}" required>
+        </div>
+        <div class="form-group">
+            <label for="sessoPaziente">Sesso</label>
+            <select class="form-control" id="sessoPaziente" th:field="*{sessoPaziente}">
+                <option value="M">Maschio</option>
+                <option value="F">Femmina</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="coscientePaziente">Cosciente</label>
+            <input type="checkbox" class="form-control"  id="coscientePaziente" th:field="*{coscientePaziente}">
+        </div>
+        <div class="form-group">
+            <label for="respiraPaziente">Respira</label>
+            <input type="checkbox" class="form-control" id="respiraPaziente" th:field="*{respiraPaziente}">
+        </div>
+        <div class="form-group">
+            <label for="patologiePaziente">Patologie</label>
+            <input type="text" class="form-control" id="patologiePaziente" th:field="*{patologiePaziente}">
+        </div>
+        <button type="submit" class="btn btn-primary">Aggiungi Paziente</button>
+    </form>
+    <br>
+       <form th:action="@{'/api/pazienti/save/' + ${idEmergenza}}" method="post">
+           <input type="hidden" id="emergenzaId1" name="idEmergenza" th:value="${idEmergenza}" readonly>
+           <button type="submit" class="btn btn-primary align-self-center">Salvataggio Informazioni</button>
+       </form>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

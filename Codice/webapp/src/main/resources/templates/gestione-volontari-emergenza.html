@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Volontari Emergenza</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center">Gestione Volontari Emergenza</h1>
+
+    <div class="text-center mb-3">
+        <h2>Volontario Loggato</h2>
+        <p><strong>Nome:</strong> <span th:text="${volontario.nomeVolontario}">Nome</span></p>
+        <p><strong>Cognome:</strong> <span th:text="${volontario.cognomeVolontario}">Cognome</span></p>
+        <p><strong>Username:</strong> <span th:text="${volontario.userVolontario}">Username volontario</span></p>
+    </div>
+
+    <form id="emergenzaForm" th:action="@{/api/volontari/updateEmergenza/{id}(id=${emergenza.id})}" method="post">
+        <input type="hidden" id="emergenzaId" name="id" th:value="${emergenza.id}">
+        <input type="hidden" id="emergenzaLatitudine" name="Lat" th:value="${emergenza.latitudineEmergenza}">
+        <input type="hidden" id="emergenzaLongitudine" name="Lon" th:value="${emergenza.longitudineEmergenza}">
+        <div class="form-group">
+            <label for="locationEmergenza">Posizione</label>
+            <input type="text" class="form-control" id="locationEmergenza" name="locationEmergenza" readonly>
+        </div>
+        <div class="form-group">
+            <label for="dataEmergenza">Data</label>
+            <input type="date" class="form-control" id="dataEmergenza" name="dataEmergenza" th:value="${emergenza.dataEmergenza}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="orarioEmergenza">Orario</label>
+            <input type="time" class="form-control" id="orarioEmergenza" name="orarioEmergenza" th:value="${emergenza.orarioEmergenza}">
+        </div>
+        <div class="form-group">
+            <label for="motivoEmergenza">Motivo</label>
+            <input type="text" class="form-control" id="motivoEmergenza" name="motivoEmergenza" th:value="${emergenza.motivoEmergenza}">
+        </div>
+        <div class="form-group">
+            <label for="codiceGravitaEmergenza">Codice Gravità</label>
+            <select class="form-control" id="codiceGravitaEmergenza" th:field="${emergenza.codgravitaEmergenza}">
+                <option value="V">Verde</option>
+                <option value="G">Giallo</option>
+                <option value="R">Rosso</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Salva</button>
+    </form>
+    <p><strong>Nome Ospedale di Destinazione:</strong><span th:text="${ospedale.nomeOspedale}"></span></p>
+    <p><strong>Distanza dell'ospedale da emergenza</strong> <span th:text="${distanzaOE}"></span></p>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script th:inline="javascript">
+
+    $(document).ready(function() {
+        const lat = /*[[${emergenza.latitudineEmergenza}]]*/ '';
+        const lon = /*[[${emergenza.longitudineEmergenza}]]*/ '';
+
+        if (lat && lon) {
+            $.get('https://nominatim.openstreetmap.org/reverse', {
+                format: 'json',
+                lat: lat,
+                lon: lon
+            }, function(data) {
+                if (data && data.display_name) {
+                    let address = data.display_name;
+                    $('#locationEmergenza').val(address);
+                } else {
+                    console.log('Address not found');
+                }
+            }).fail(function() {
+                console.log('Error retrieving address');
+            });
+        }
+    });
+</script>
+</body>
+</html>
