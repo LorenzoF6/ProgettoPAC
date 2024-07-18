@@ -1,0 +1,150 @@
+Testing API via Postman
+
+
+saltate per ora Endpoint: GET /api/emergenza/gestioneEmergenza POST /api/emergenza/addData 
+GET /api/volontari/infoVolontarioSquadra GET /api/volontari/verificaEmergenza 
+GET /api/volontari/gestioneEmergenza/1 POST /api/volontari/updateEmergenza/1
+GET /api/pazienti/emergenzaNumero/1 POST /api/pazienti/addPaziente/1
+POST /api/pazienti/save/1
+
+Api testata: POST /login 
+
+Descrizione: login dell'operatore (corretto)
+
+Body:
+
+Status:
+
+Output previsto:
+
+
+
+Api testata: POST /login 
+
+Descrizione: login dell'operatore (errato)
+
+Body:
+
+Status:
+
+Output previsto:
+
+
+
+Api testata: POST /login
+
+Descrizione: login del volontario (corretto)
+
+Body:
+
+Status:
+
+Output previsto:
+
+
+
+Api testata: POST /login
+
+Descrizione: login del volontario errato
+
+Body:
+
+Status:
+
+Output previsto:
+
+
+
+Api testata: GET /logout
+
+Descrizione: logout
+
+Body:
+
+Status:
+
+Output previsto:
+
+
+
+Api testata: GET /api/emergenza/all
+
+Descrizione: lista di tutte le emergenze
+
+Body:
+
+Status:
+
+Output previsto:
+
+
+
+Api testata: GET /api/emergenza/reportEmergenza/1
+
+Descrizione: report dettagliata dell'emergenza 1
+
+Body:
+
+Status:
+
+Output previsto:
+
+
+
+Api testata: GET /api/emergenza/generaPDF/1
+
+Descrizione:
+
+Body:
+
+Status:
+
+Output previsto:
+
+
+
+Api testata: GET /api/mezzo/all
+
+Descrizione: lista di tutti i mezzi a disposizione
+
+Body:
+
+Status:
+
+Output previsto:
+
+
+
+Api testata: 
+
+Descrizione:
+
+Body:
+
+Status:
+
+Output previsto:
+
+
+
+Api testata: 
+
+Descrizione:
+
+Body:
+
+Status:
+
+Output previsto:
+
+
+
+Api testata: 
+
+Descrizione:
+
+Body:
+
+Status:
+
+Output previsto:
